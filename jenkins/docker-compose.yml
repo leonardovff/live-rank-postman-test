@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  jenkins:
+    driver: bridge
+
+volumes:
+  jenkins:
+    driver: local
+
+services:
+    jenkins:
+      build: ./jenkins
+      user: "1000:1000"
+    #   restart: always  
+      volumes:
+        - ./jenkins/app:/var/jenkins_home
+      ports:
+        - "8080:8080"
+        - "50000:50000"
+      networks:
+        - jenkins

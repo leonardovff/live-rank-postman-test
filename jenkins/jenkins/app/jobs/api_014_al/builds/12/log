@@ -1,0 +1,53 @@
+Started by timer
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/api_014_al
+[api_014_al] $ /bin/sh -xe /tmp/jenkins4807347365278118381.sh
++ newman run /var/jenkins_home/seletiva.postman_collection.json --suppress-exit-code 1
+newman
+
+seletiva
+
+→ teste
+  GET https://www.google.com/ [200 OK, 14.2KB, 625ms]
+  1. teste
+
+→ teste Copy
+  GET https://www.google.com/ [200 OK, 14.19KB, 214ms]
+  2. teste
+
+┌─────────────────────────┬─────────────────────┬────────────────────┐
+│                         │            executed │             failed │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              iterations │                   1 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│                requests │                   2 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│            test-scripts │                   2 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│      prerequest-scripts │                   0 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              assertions │                   2 │                  2 │
+├─────────────────────────┴─────────────────────┴────────────────────┤
+│ total run duration: 977ms                                          │
+├────────────────────────────────────────────────────────────────────┤
+│ total data received: 26.5KB (approx)                               │
+├────────────────────────────────────────────────────────────────────┤
+│ average response time: 419ms [min: 214ms, max: 625ms, s.d.: 205ms] │
+└────────────────────────────────────────────────────────────────────┘
+
+  #  failure    detail                                                                          
+                                                                                                
+ 1.  JSONError  teste                                                                           
+                Unexpected token '<' at 1:1                                                     
+                <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="pt 
+                ^                                                                               
+                at assertion:0 in test-script                                                   
+                inside "teste"                                                                  
+                                                                                                
+ 2.  JSONError  teste                                                                           
+                Unexpected token '<' at 1:1                                                     
+                <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="pt 
+                ^                                                                               
+                at assertion:0 in test-script                                                   
+                inside "teste Copy"                                                             
+Finished: SUCCESS

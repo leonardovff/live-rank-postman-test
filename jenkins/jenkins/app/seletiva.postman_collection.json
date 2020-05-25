@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "549f765d-e00a-4be0-a924-5c79087e9e10",
+		"name": "seletiva",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "teste",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8b0fe9f8-fd7b-45bd-8a6e-dfbbe3b3a231",
+						"exec": [
+							"pm.test(\"teste\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql(100);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.google.com/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"google",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teste Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "841e5dfa-dc23-44ac-b89c-8de697f3cbe4",
+						"exec": [
+							"pm.test(\"teste\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql(100);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.google.com/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"google",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teste Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "be2ee976-298a-4080-a917-6fa75c9b8e9e",
+						"exec": [
+							"pm.test(\"teste\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql(100);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.google.com/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"google",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
