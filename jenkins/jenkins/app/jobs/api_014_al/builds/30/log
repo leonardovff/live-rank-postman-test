@@ -1,0 +1,10 @@
+Started by timer
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/api_014_al
+[api_014_al] $ /bin/sh -xe /tmp/jenkins4307080953561196054.sh
++ newman run /var/jenkins_home/seletiva.postman_collection.json --suppress-exit-code 1
+error: collection could not be loaded
+  unable to read data from file "/var/jenkins_home/seletiva.postman_collection.json"
+  ENOENT: no such file or directory, open '/var/jenkins_home/seletiva.postman_collection.json'
+
+Finished: SUCCESS

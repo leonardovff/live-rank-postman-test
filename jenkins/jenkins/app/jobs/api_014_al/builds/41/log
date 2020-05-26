@@ -1,0 +1,9 @@
+Started by timer
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/api_014_al
+[api_014_al] $ /bin/sh -xe /tmp/jenkins6524670301689444249.sh
++ newman run /var/teste/teste.collection.json -e al.environment.json --suppress-exit-code 1
+error: could not load environment
+  ENOENT: no such file or directory, open 'al.environment.json'
+
+Finished: SUCCESS

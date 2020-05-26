@@ -15,6 +15,7 @@ services:
     #   restart: always  
       volumes:
         - ./jenkins/app:/var/jenkins_home
+        - ./../competidores:/var/teste
       ports:
         - "8080:8080"
         - "50000:50000"

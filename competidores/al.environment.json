@@ -1,0 +1,14 @@
+{
+	"id": "0202aace-c0f8-413d-b082-280f21cae3bb",
+	"name": "competidor1",
+	"values": [
+		{
+			"key": "url_to_api",
+			"value": "www.google.com",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-05-26T14:56:42.889Z",
+	"_postman_exported_using": "Postman/7.25.0"
+}

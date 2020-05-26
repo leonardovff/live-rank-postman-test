@@ -27,15 +27,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://www.google.com/",
-					"protocol": "https",
+					"raw": "{{url_to_api}}",
 					"host": [
-						"www",
-						"google",
-						"com"
-					],
-					"path": [
-						""
+						"{{url_to_api}}"
 					]
 				}
 			},
@@ -63,51 +57,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://www.google.com/",
-					"protocol": "https",
+					"raw": "{{url_to_api}}",
 					"host": [
-						"www",
-						"google",
-						"com"
-					],
-					"path": [
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "teste Copy Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "be2ee976-298a-4080-a917-6fa75c9b8e9e",
-						"exec": [
-							"pm.test(\"teste\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.value).to.eql(100);",
-							"});",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://www.google.com/",
-					"protocol": "https",
-					"host": [
-						"www",
-						"google",
-						"com"
-					],
-					"path": [
-						""
+						"{{url_to_api}}"
 					]
 				}
 			},

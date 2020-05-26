@@ -1,0 +1,9 @@
+Started by user [8mha:////4BPu46W319fV1NeFBqWs1MrEAzZiyd3l0PzQZjT3cvf/AAAAmh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyOEgY+/dLi1CL94tSc1JLMskQAiW2WNsMAAAA=[0mseletiva
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/api_014_al
+[api_014_al] $ /bin/sh -xe /tmp/jenkins8326508604107150223.sh
++ newman run /var/teste/teste.collection.json -e al.environment.json --suppress-exit-code 1
+error: could not load environment
+  ENOENT: no such file or directory, open 'al.environment.json'
+
+Finished: SUCCESS
