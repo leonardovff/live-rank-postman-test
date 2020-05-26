@@ -1,0 +1,10 @@
+Started by user [8mha:////4BPu46W319fV1NeFBqWs1MrEAzZiyd3l0PzQZjT3cvf/AAAAmh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyOEgY+/dLi1CL94tSc1JLMskQAiW2WNsMAAAA=[0mseletiva
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/al
+[al] $ /bin/sh -xe /tmp/jenkins9129963761593044499.sh
++ bash /var/teste/al.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (7) Failed to connect to jenkins port 3000: Connection refused
+0
+Sem testeFinished: SUCCESS

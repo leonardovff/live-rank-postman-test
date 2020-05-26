@@ -1,0 +1,57 @@
+Started by timer
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/al
+[al] $ /bin/sh -xe /tmp/jenkins6890987339332104632.sh
++ bash /var/teste/al.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100     1  100     1    0     0    973      0 --:--:-- --:--:-- --:--:--  1000
+1
+newman
+
+seletiva
+
+→ teste
+  GET www.google.com [200 OK, 5.94KB, 444ms]
+  1. teste
+
+→ teste Copy
+  GET www.google.com [200 OK, 5.61KB, 196ms]
+  2. teste
+
+┌─────────────────────────┬─────────────────────┬────────────────────┐
+│                         │            executed │             failed │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              iterations │                   1 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│                requests │                   2 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│            test-scripts │                   2 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│      prerequest-scripts │                   0 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              assertions │                   2 │                  2 │
+├─────────────────────────┴─────────────────────┴────────────────────┤
+│ total run duration: 790ms                                          │
+├────────────────────────────────────────────────────────────────────┤
+│ total data received: 10.5KB (approx)                               │
+├────────────────────────────────────────────────────────────────────┤
+│ average response time: 320ms [min: 196ms, max: 444ms, s.d.: 124ms] │
+└────────────────────────────────────────────────────────────────────┘
+
+  #  failure    detail                                                                          
+                                                                                                
+ 1.  JSONError  teste                                                                           
+                Unexpected token '<' at 1:1                                                     
+                <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="pt 
+                ^                                                                               
+                at assertion:0 in test-script                                                   
+                inside "teste"                                                                  
+                                                                                                
+ 2.  JSONError  teste                                                                           
+                Unexpected token '<' at 1:1                                                     
+                <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="pt 
+                ^                                                                               
+                at assertion:0 in test-script                                                   
+                inside "teste Copy"                                                             
+Finished: SUCCESS

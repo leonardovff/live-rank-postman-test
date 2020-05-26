@@ -17,7 +17,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>newman run /var/teste/teste.collection.json -e /var/teste/al.environment.json --suppress-exit-code 1</command>
+      <command>newman run /var/teste/teste.collection.json -e /var/teste/sp.environment.json --suppress-exit-code 1</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
