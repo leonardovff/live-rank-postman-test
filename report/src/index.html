@@ -2,45 +2,250 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap"> -->
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+      @import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap');
+      body, html {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background: #4b4168;
+        color: #333;
+      }
+      .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        font-family: 'Red Hat Display', sans-serif;
+      }
+      .top3 {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        color: #4b4168;
+      }
+      .top3 .item {
+        box-sizing: border-box;
+        position: relative;
+        background: white;
+        width: 9rem;
+        height: 10rem;
+        text-align: center;
+        padding: 2.8rem 0 0;
+        margin: 1rem 1rem 2rem;
+        border-radius: 0.5rem;
+        transform-origin: bottom;
+        cursor: pointer;
+        transition: transform 200ms ease-in-out;
+        box-shadow: 0 0 4rem 0 rgba(0, 0, 0, 0.1), 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
+      }
+      .top3 .item .pic {
+        position: absolute;
+        top: -2rem;
+        left: 2.5rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        margin-right: 1rem;
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+      }
+      .top3 .item .pos {
+        font-weight: 900;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .top3 .item .name {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      .top3 .item .score {
+        opacity: 0.5;
+      }
+      .top3 .item .score:after {
+        display: block;
+        content: 'pontos';
+        opacity: 0.5;
+      }
+      .top3 .item.one {
+        width: 10rem;
+        height: 11rem;
+        padding-top: 3.5rem;
+      }
+      .top3 .item.one .pic {
+        width: 5rem;
+        height: 5rem;
+        left: 2.5rem;
+      }
+      .top3 .item:hover {
+        transform: scale(1.05);
+      }
+      .list {
+        padding-left: 2rem;
+        margin: 0 auto;
+      }
+      .list .item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: white;
+        height: 3rem;
+        border-radius: 4rem;
+        margin-bottom: 2rem;
+        background: #eaa786;
+        transform-origin: left;
+        cursor: pointer;
+        transition: transform 200ms ease-in-out;
+        box-shadow: 0 0 4rem 0 rgba(0, 0, 0, 0.1), 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
+      }
+      .list .item .pos {
+        font-weight: 900;
+        position: absolute;
+        left: -2rem;
+        text-align: center;
+        font-size: 1.25rem;
+        width: 1.5rem;
+        color: white;
+        opacity: 0.6;
+        transition: opacity 200ms ease-in-out;
+      }
+      .list .item .pic {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        margin-right: 1rem;
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+      }
+      .list .item .name {
+        flex-grow: 2;
+        flex-basis: 10rem;
+        font-size: 1.1rem;
+      }
+      .list .item .score {
+        margin-right: 1.5rem;
+        opacity: 0.5;
+      }
+      .list .item .score:after {
+        margin-right: 1rem;
+        content: 'pontos';
+        opacity: 0.5;
+      }
+      .list .item:hover {
+        transform: scale(1.05);
+      }
+      .list .item:hover .pos {
+        opacity: 0.8;
+      }
+      #warning{
+        color: white;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <div id="rank">
-      <h1>Rank</h1>
+    <div class="center">
+      <div id="top3" class="top3">
+      </div>
+      <div id="list" class="list">
+        
+      </div>
+      <h1 id="warning">Executando teste</h1>
+      <div id="building" class="list">
+  
+      </div>
+    </div>
 
-    </div>
-    <div id="building">
-      <h1>Executando teste</h1>
-      
-    </div>
+
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        const renderFirstThreeSingle = (number, classname, people, pontuation) => {
+          return `<div class="${classname} item">
+            <div class="pos">${number}</div>
+            <div class="pic" style="background-image: url('https://randomuser.me/api/portraits/men/44.jpg')"></div>
+            <div class="name">
+              ${people}
+            </div>
+            <div class="score">
+              ${pontuation}
+            </div>
+          </div>`
+        }
+        const renderFirstThree = data => {
+          let str = "";
+          if(data[1]){
+            let row = data[1];
+            str += renderFirstThreeSingle(2, 'two', row.regional, row.score);
+          }
+
+          if(data[0]){
+            let row = data[0];
+            str += renderFirstThreeSingle(1, 'one', row.regional, row.score);
+          }
+
+          if(data[2]){
+            let row = data[2];
+            str += renderFirstThreeSingle(3, 'three', row.regional, row.score);
+          }
+          return str;
+        }
+        const renderOthersItem = (number, people, pontuation) => {
+          return `<div class="item">
+              <div class="pos">
+                ${number || ''}
+              </div>
+              <div class="pic" style="background-image: url('https://randomuser.me/api/portraits/men/88.jpg')"></div>
+              <div class="name">
+                ${people}
+              </div>
+              <div class="score">
+                ${pontuation || 'calculando'}
+              </div>
+            </div>`
+        }
+        const renderOthers = data => {
+          data = data.slice(3);
+          let str = '';
+          data.forEach((row, i) => {
+            str += renderOthersItem(i+4, row.regional, row.score);
+          });
+          return str;
+        }
+
+        const renderInBuilding = data => {
+          let str = '';
+          data.forEach((row, i) => {
+            str += renderOthersItem(null, row.regional, null);
+          });
+          return str;
+        }
         const render = data => {
-          let str = "<h1>Rank</h1>";
-          data.regionals.filter(row => !row.building).forEach(row => {
-            str += `${row.regional} - ${row.result[0][1]} <br>`;
-          });
+          const notBuilding = data.filter(row => !row.building);
+          const notBuildingOrdened = notBuilding.sort((a,b) => b.score -a.score);
+          const firstTree = renderFirstThree(notBuildingOrdened);
+          document.getElementById('top3').innerHTML = firstTree; 
 
-          document.getElementById('rank').innerHTML = str; 
-          
-          str = "<h1>Executando teste</h1>";
-          data.regionals.filter(row => row.building).forEach(row => {
-            str += `${row.regional} - Executando os testes"<br>"`;
-          });
+          const others = renderOthers(notBuildingOrdened);
+          document.getElementById('list').innerHTML = others; 
 
-          document.getElementById('building').innerHTML = str; 
+          const inBuilding = data.filter(row => row.building);
+          document.getElementById('building').innerHTML = renderInBuilding(inBuilding);
         }
         var socket = io();
         socket.on('update', (data) => {
+          data = data.regionals.map(row => {
+            row = {...row};
+            console.log(row);
+            if(!row.building){
+              row.score = row.result[0][1];
+            }
+            return row;
+          });
           render(data);
         });
     </script>

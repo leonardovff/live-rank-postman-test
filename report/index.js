@@ -32,4 +32,4 @@ setInterval(async () => {
             console.error('err: ', err);
         });
     io.emit('update', {regionals});
-}, 1000 * 5);
+}, 1000 * 2);
