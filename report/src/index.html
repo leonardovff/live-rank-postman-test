@@ -15,17 +15,29 @@
   </head>
   <body>
     <div id="rank">
+      <h1>Rank</h1>
 
+    </div>
+    <div id="building">
+      <h1>Executando teste</h1>
+      
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const render = data => {
-          var str = "";
-          data.regionals.forEach(row => {
-            console.log(row.result)
-            str += row.regional + " - " + row.result[0][1] + "<br>";
+          let str = "<h1>Rank</h1>";
+          data.regionals.filter(row => !row.building).forEach(row => {
+            str += `${row.regional} - ${row.result[0][1]} <br>`;
           });
+
           document.getElementById('rank').innerHTML = str; 
+          
+          str = "<h1>Executando teste</h1>";
+          data.regionals.filter(row => row.building).forEach(row => {
+            str += `${row.regional} - Executando os testes"<br>"`;
+          });
+
+          document.getElementById('building').innerHTML = str; 
         }
         var socket = io();
         socket.on('update', (data) => {

@@ -23,8 +23,13 @@ app.get('/api-status', async (req, res) => {
 
 setInterval(async () => {
     const jenkins = jenkinsapi.init('http://seletiva:11398bb67ac8297cb9f5d53bb6f3c47956@localhost:8080');
-    const jobs = await getJobs(jenkins);
-    const regionals = await getLastBuilds(jenkins, jobs);
+    const jobs = await getJobs(jenkins)
+        .catch(err => {
+            console.error('err: ', err);
+        });;
+    const regionals = await getLastBuilds(jenkins, jobs)
+        .catch(err => {
+            console.error('err: ', err);
+        });
     io.emit('update', {regionals});
-    console.log(regionals, 'entrou');
 }, 1000 * 5);
